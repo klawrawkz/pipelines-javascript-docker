@@ -70,3 +70,14 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          - task: AzureCLI@2
+            displayName: echo cluster and RG variables
+            inputs:
+              scriptType: pscore
+              scriptLocation: inlineScript
+              azureSubscription: $(azureConnection)
+              inlineScript: |
+                $resourceGroupName="my-dev-env-app-rg"
+                $clusterName="myapp"
+                echo $clusterName
+                echo $resourceGroupName
