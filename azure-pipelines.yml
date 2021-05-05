@@ -77,9 +77,10 @@ stages:
               scriptType: pscore
               scriptLocation: inlineScript
               azureSubscription: $(azureConnection)
-              inlineScript: |
+              inlineScript: 
+                sudo apt-get install libssl1.0.2
                 $resourceGroupName="my-dev-env-app-rg"
-                $clusterName="myapp"
+                $clusterName="myapp"sudo apt-get install libssl1.0.2
 
                 az aks use-dev-spaces -n $clusterName -g $resourceGroupName -s default -y
                 $hostSuffix=$(azds show-context -o json | ConvertFrom-Json).controller.hostSuffix
