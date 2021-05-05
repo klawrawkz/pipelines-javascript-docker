@@ -81,3 +81,4 @@ stages:
                 $clusterName="myapp"
                 echo $clusterName
                 echo $resourceGroupName
+                
