@@ -78,11 +78,10 @@ stages:
               scriptLocation: inlineScript
               azureSubscription: $(azureConnection)
               inlineScript: 
-                sudo apt-get install libssl
+                
                 $resourceGroupName="my-dev-env-app-rg"
                 $clusterName="myapp"
-
-                az aks use-dev-spaces -n $clusterName -g $resourceGroupName -s default -y
+                az aks use-dev-spaces -n $clusterName -g $resourceGroupName
                 echo azds show-context
                 $hostSuffix=$(azds show-context -o json | ConvertFrom-Json).controller.hostSuffix
                 echo "##vso[task.setvariable variable=HostSuffix]$hostSuffix"
