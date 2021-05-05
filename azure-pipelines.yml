@@ -150,3 +150,15 @@ stages:
                 echo $clusterName
                 echo $resourceGroupName
 
+          - task: AzureCLI@2
+            displayName: PS get host suffix
+            inputs:
+              scriptType: ps
+              scriptLocation: inlineScript
+              azureSubscription: $(azureConnection)
+              inlineScript: |
+                $clusterName="myapp"
+                $resourceGroupName="my-dev-env-app-rg"
+                az aks use-dev-spaces -n $clusterName -g $resourceGroupName
+                hostSuffix=$(azds show-context -o json | ConvertFrom-Json).controller.hostSuffix
+                echo "##vso[task.setvariable variable=HostSuffix]$hostSuffix"
