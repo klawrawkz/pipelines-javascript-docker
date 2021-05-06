@@ -1,6 +1,6 @@
 # Deploy to Kubernetes - Review app with Azure DevSpaces
 # Build and push image to Azure Container Registry; Deploy to Azure Kuberentes Services and setup Review App with Azure DevSpaces
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker 
 
 trigger:
 - master
